@@ -1,7 +1,33 @@
+<#
+.SYNOPSIS
+Script for adding users to a AD-server. 
+
+.DESCRIPTION
+This scripts gives you 2 choises, one for Auto mode and one for manual.
+Auto mode reads a csv-file and adds the users from the list to the AD-server.
+The manual mode, lest you press in the infomation one step at the time for each user.
+
+.PARAMETER Message
+The message to log to the specified log file log.txt.
+
+.NOTES
+Author: Rune Willum Geertsen
+Version: 1.0
+Date: 07-01-2025
+#>
+
+
+Write-Host "Select metode of adding users"
+Write-Host "Automated from csv file"
+Write-Host "Manuel mode"
+
+$choice = Read-Host "Press your option (1 or 2)"
+
+if ($choice -eq "1") {
+
 # Placering af csv filen med brugere
 $csvFile = "./users.csv"
-<#
-.Get help??#>
+
 # Placering af logfilen
 $logFile = "./log.txt"
 $logDirectory = [System.IO.Path]::GetDirectoryName($logFile)
@@ -29,5 +55,25 @@ foreach ($user in $users) {
         $errorMessage | Out-File -FilePath $logFile -Append
     }
 }
+} elseif ($choice -eq "2") {
+    # Manuel indtastning
+    $Name = Read-Host "Indtast navn"
+    $GivenName = Read-Host "Indtast fornavn"
+    $Surname = Read-Host "Indtast efternavn"
+    $Password = Read-Host "Indtast brugerens kodeord"
 
+    # Opret AD-bruger med indtastede data
+    try {
+        New-ADUser -Navn $Name 
+                   -Fornavn $GivenName 
+                   -Efternavn $Surname 
+                   -AccountPassword (ConvertTo-SecureString $Password -AsPlainText -Force) 
+                   -Enabled $true
+        Write-Host "Bruger $Name er oprettet."
+    } catch {
+        Write-Host "Fejl ved oprettelse af bruger $($Name): $_"
+    }
+} else {
+    Write-Host "Not a valid choice"
+}
 
