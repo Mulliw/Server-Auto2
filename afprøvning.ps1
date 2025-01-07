@@ -16,7 +16,7 @@ $users = Import-Csv -Path $csvFile
 foreach ($user in $users) {
     try {
         # Her oprettes brugeren ud fra de parameter vi har i vores csv-fil    
-        New-ADUser -SamAccountName $user.Username -GivenName $user.FirstName -Surname $user.LastName -EmailAddress $user.Email
+        New-ADUser -SamAccountName $user.Username -GivenName $user.FirstName -Surname $user.LastName -EmailAddress $user.Email -Name $user.FirstName
 
         # Hvis brugeroprettelsen er succesfuld, skrives det i loggen
         $message = "Bruger oprettet: $($user.FirstName) $($user.LastName) ($($user.Username)) med email $($user.Email)"
