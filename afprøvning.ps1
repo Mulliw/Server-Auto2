@@ -1,8 +1,8 @@
 # Placering af csv filen med brugere
-$csvFile = "C:\Users\Rune_\OneDrive\Dokumenter\Server Auto2\Users.csv"
+$csvFile = "./"
 
 # Placering af logfilen
-$logFile = "C:\Users\Rune_\OneDrive\Dokumenter\Server Auto2\Logsoutput\logfile.txt"
+$logFile = "./"
 $logDirectory = [System.IO.Path]::GetDirectoryName($logFile)
 
 # Her er der lavet en if, til at oprette en logfil hvis ikke der er en i forvejen.
