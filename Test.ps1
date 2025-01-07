@@ -1,8 +1,9 @@
 # Placering af csv filen med brugere
-$csvFile = "./"
-
+$csvFile = "./users.csv"
+<#
+.Get help??#>
 # Placering af logfilen
-$logFile = "./"
+$logFile = "./log.txt"
 $logDirectory = [System.IO.Path]::GetDirectoryName($logFile)
 
 # Her er der lavet en if, til at oprette en logfil hvis ikke der er en i forvejen.
