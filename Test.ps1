@@ -15,7 +15,7 @@ Author: Rune Willum Geertsen
 Version: 1.0
 Date: 07-01-2025
 #>
-cd C:\Users\Rune_\OneDrive\Dokumenter\Server Auto2\Test.
+
 
 Write-Host "Select metode of adding users"
 Write-Host "Automated from csv file"
