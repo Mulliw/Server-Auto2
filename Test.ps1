@@ -67,9 +67,9 @@ foreach ($user in $users) {
 
     # Opret AD-bruger med indtastede data
     try {
-        New-ADUser -Navn $Name 
-                   -Fornavn $GivenName 
-                   -Efternavn $Surname 
+        New-ADUser -Name $Name 
+                   -GivenName $GivenName 
+                   -Surname $Surname 
                    -AccountPassword (ConvertTo-SecureString $Password -AsPlainText -Force) 
                    -Enabled $true
         Write-Host "Bruger $Name er oprettet."
