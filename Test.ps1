@@ -56,8 +56,9 @@ foreach ($user in $users) {
         # Hvis der opstår en fejl, skrives det i loggen
         $errorMessage = "Fejl ved oprettelse af bruger: $($user.FirstName) $($user.LastName) ($($user.Username)). Fejl: $($_.Exception.Message)"
         $errorMessage | Out-File -FilePath $logFile -Append
+        
     }
-}
+}break
 } elseif ($choice -eq "2") {
     # Manuel indtastning
     $Name = Read-Host "Indtast navn"
