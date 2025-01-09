@@ -16,12 +16,15 @@ Version: 1.0
 Date: 07-01-2025
 #>
 
+while ($true) {
+Write-Host "Select option for metode of adding users"
+Write-Host "Automated from csv file (1)"
+Write-Host "Manuel mode, option (2)"
+Write-Host "Exit script, option (3)"
 
-Write-Host "Select metode of adding users"
-Write-Host "Automated from csv file"
-Write-Host "Manuel mode"
+$choice = Read-Host "Press your option (1,2 or 3)"
 
-$choice = Read-Host "Press your option (1 or 2)"
+
 
 if ($choice -eq "1") {
 
@@ -73,7 +76,10 @@ foreach ($user in $users) {
     } catch {
         Write-Host "Fejl ved oprettelse af bruger $($Name): $_"
     }
+} elseif ($choice -eq "3") {
+    Write-Host "Script terminated"
+    break
 } else {
     Write-Host "Not a valid choice"
 }
-
+}
