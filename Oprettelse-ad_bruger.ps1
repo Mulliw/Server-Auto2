@@ -84,3 +84,4 @@ foreach ($user in $users) {
     Write-Host "Not a valid choice"
 }
 }
+#slut med dette skript
